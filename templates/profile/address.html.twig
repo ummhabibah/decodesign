@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile - Address | DecoDesign : fashion at home and at a low cost{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<ol class="breadcrumb justify-content-center">
+			<li class="breadcrumb-item"><a href="{{ path('profile') }}">Profile</a></li>
+			<li class="breadcrumb-item active">Address</li>
+		</ol>
+		<div class="container-content pb-4 text-center">
+			<a href="{{ path('profile_address_add') }}" class="btn btn-outline-dark btn-sm float-right">Add</a>
+			<h1 class="container-heading">My addresses</h1>
+		</div>
+	</div>
+	<div class="container">
+		{% for message in app.flashes('notice') %}
+ 			<div class="alert alert-info">
+ 				{{ message }}
+ 			</div>
+ 		{% endfor %}
+
+		{% if app.user.addresses|length == 0 %}
+			<p class="text-center">You don't have any addresses for the moment, but you can always add one by clicking <a href="{{ path('profile_address_add') }}">here</a></p>
+		{% else %}
+			<div class="row">
+				{% for address in app.user.addresses %}
+					<div class="col-md-4">
+						<div class="card" style="width: 18rem;">
+  							<div class="card-body">
+    							<h5 class="card-title">{{ address.name }}</h5>
+    							<h6 class="card-subtitle mb-2 text-muted">{{ address.lastname }} {{ address.firstname }}</h6>
+    							<p class="card-text">
+    								{{ address.address }}<br>
+    								{{ address.postal }} {{ address.city }}, {{ address.country }}
+    							</p>
+    							<a href="{{ path('profile_address_edit', { 'id' : address.id }) }}" class="card-link">Edit</a>
+    							<a href="{{ path('profile_address_delete', { 'id' : address.id }) }}" class="card-link">Delete</a>
+  							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>		
+		{% endif %}
+	</div>
+{% endblock %}
