@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register | DecoDesign : fashion at home and at a low cost{% endblock %}
+
+{% block body %}
+	<div class="block-log">
+		<div class="block-log-header">
+			<h6 class="text-uppercase mb-0">register</h6>
+		</div>
+		<div class="block-log-body">
+		
+			{% for message in app.flashes('notice') %}
+ 				<div class="alert alert-info">
+ 					{{ message }}
+ 				</div>
+ 			{% endfor %}
+
+			<p class="lead">Not register yet ?</p>
+			<p class="text-muted">Ut fermentum, augue vitae semper volutpat, tellus est aliquam ipsum, a consectetur lectus quam at nibh. Morbi suscipit posuere ultrices. Curabitur at lectus justo.</p>
+			<hr>
+			{{ form_start(form) }}
+			<div class="row">
+				<div class="col-md-6">{{ form_row(form.lastname) }}</div>
+				<div class="col-md-6">{{ form_row(form.firstname) }}</div>
+				<div class="col-md-12">{{ form_row(form.email) }}</div>
+				<div class="col-md-6">{{ form_row(form.password.first) }}</div>
+				<div class="col-md-6">{{ form_row(form.password.second) }}</div>
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-outline-dark">Register</button>
+				</div>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+	
+{% endblock %}

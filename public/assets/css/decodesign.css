@@ -1,0 +1,22 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* margin */
+.mb-0 {
+	margin-bottom: 0 !important
+}
+
+
+
+/* CUSTOMIZE REGISTER
+-------------------------------------------------- */
+.block-log {
+	max-width: 600px;
+	margin: 0 auto
+}
+.block-log-header {
+	padding: 1.2rem 1.5rem;
+	background: #f8f9fa
+}
+.block-log-body {
+	padding: 1.2rem 1.5rem
+}
