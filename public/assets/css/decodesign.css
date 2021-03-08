@@ -1,11 +1,19 @@
 /* GLOBAL STYLES
 -------------------------------------------------- */
-/* margin */
+/* margin bottom */
 .mb-0 {
 	margin-bottom: 0 !important
 }
 
+/* margin right */
+.mr-2 {
+	margin-right: .5rem !important
+}
 
+/* padding bottom */
+.pb-5 {
+	padding-bottom: 3rem !important
+}
 
 /* CUSTOMIZE REGISTER
 -------------------------------------------------- */
@@ -19,4 +27,26 @@
 }
 .block-log-body {
 	padding: 1.2rem 1.5rem
+}
+
+/* CUSTOMIZE PROFILE
+-------------------------------------------------- */
+/* index profile */
+.container-heading {
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin-bottom: 2rem;
+}
+.profile-item {
+	background-color: #f1f2f6;
+	padding: 70px;
+}
+.profile-item a {
+	text-transform: uppercase;
+	font-size: 13px;
+	color: #3d3d3d;
+	font-weight: bold;
+}
+.profile-item a:hover {
+	text-decoration: none;
 }

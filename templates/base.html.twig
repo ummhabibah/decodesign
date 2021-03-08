@@ -34,7 +34,9 @@
                   </li>
                </ul>
                {% if app.user %}
-                  <a href=""></a>
+                  <a href="{{ path('profile') }}" class="btn btn-outline-light">Profile</a>&nbsp;<a href="{{ path('app_logout') }}" class="btn btn-outline-light">Sign out</a>
+               {% else %}
+                  <a href="{{ path('app_login') }}" class="btn btn-outline-light"><i class="fa fa-user-circle mr-2"></i>Sign in</a>&nbsp;<a href="{{ path('register') }}" class="btn btn-outline-light">Register</a>
                {% endif %}
             </div>
          </nav>
