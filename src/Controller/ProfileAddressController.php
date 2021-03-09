@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Cart;
 use App\Entity\Address;
 use App\Form\AddressType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -29,7 +30,7 @@ class ProfileAddressController extends AbstractController
    /**
     * @Route("/profile/add-address", name="profile_address_add")
     */
-   public function add(Request $request): Response
+   public function add(Cart $cart, Request $request): Response
    {
    	$address = new Address();
 
@@ -44,7 +45,11 @@ class ProfileAddressController extends AbstractController
 
    		$this->entityManager->flush();
 
-   		return $this->redirectToRoute('profile_address');
+         if ($cart-get()) {
+            return $this->redirectToRoute('order');
+         } else {
+            return $this->redirectToRoute('profile_address');
+         }
    	}
 
       return $this->render('profile/address_form.html.twig', [

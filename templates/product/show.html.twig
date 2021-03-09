@@ -24,7 +24,7 @@
 					<p class="mb-4 text-muted">{{ product.description }}</p>
 					<ul class="list-inline">
 						<li class="list-inline-item">
-							<button type="submit" class="btn btn-dark btn-lg mb-1"><i class="fa fa-shopping-cart mr-2"></i>Add to cart</button>
+							<a href="{{ path('cart_add', { 'id' : product.id }) }}" class="btn btn-dark btn-lg mb-1"><i class="fa fa-shopping-cart mr-2"></i>Add to cart</a>
 						</li>
 					</ul>
 				</div>

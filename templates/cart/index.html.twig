@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart | DecoDesign : fashion at home and at a low cost{% endblock %}
+
+{% block body %}
+	{% if cart|length > 0 %}
+		<div class="container">
+			<ol class="breadcrumb justify-content-center">
+				<li class="breadcrumb-item"><a href="{{ path('products') }}">Shop</a></li>
+				<li class="breadcrumb-item active">Shopping cart</li>
+			</ol>
+			<div class="container-content pb-5 text-center">
+				<h1 class="container-heading">Shopping cart</h1>
+				<div class="row">
+					<div class="col-xl-8 offset-xl-2">
+						<p class="lead text-muted">
+							You have {{ cart|length }} item{% if cart|length > 1 %}s{% endif %} in your cart
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<section>
+	   	<div class="container">
+		      <div class="row mb-5"> 
+		         <div class="col-lg-8">
+		            <div class="cart">
+		              	<div class="cart-wrapper">
+		                	<div class="cart-header text-center">
+		                  	<div class="row">
+		                    		<div class="col-5">Item</div>
+		                    		<div class="col-2">Price</div>
+		                    		<div class="col-2">Quantity</div>
+		                    		<div class="col-2">Total</div>
+		                    		<div class="col-1"></div>
+		                  	</div>
+		                	</div>
+		                	<div class="cart-body">
+		                		{% set total = null %}
+		                  	{% for product in cart %}
+		                  		<div class="cart-item">
+			                    		<div class="row d-flex align-items-center text-center">
+			                      		<div class="col-5">
+			                        		<div class="d-flex align-items-center">
+			                        			<a href="">
+			                        				<img class="cart-item-img" src="/uploads/{{ product.product.image }}" alt="{{ product.product.name }}">
+			                        			</a>
+			                          			<div class="cart-title text-left">
+			                          				<a class="text-uppercase text-dark" href="">
+			                          					<strong>{{ product.product.name }}</strong>
+			                          				</a>
+			                          			</div>
+			                        		</div>
+			                      		</div>
+			                      		<div class="col-2">{{ (product.product.price / 100)|number_format(2, ',', ',') }} €</div>
+			                      		<div class="col-2">
+			                        		<div class="d-flex align-items-center">
+			                          			<div class="btn btn-items btn-items-decrease">-</div>
+			                          			<input class="form-control text-center input-items" type="text" value="{{ product.quantity }}">
+			                          			<div class="btn btn-items btn-items-increase">+</div>
+			                        		</div>
+			                      		</div>
+			                      		<div class="col-2 text-center">{{ ((product.product.price * product.quantity) / 100)|number_format(2, ',', ',') }} €</div>
+			                      		<div class="col-1 text-center"><a href="{{ path('cart_delete', { 'id' : product.product.id }) }}" class="cart-remove"> <i class="fa fa-times"></i></a></div>
+			                    		</div>
+			                  	</div>
+			                  	{% set total = total + (product.product.price * product.quantity) %}
+			                  {% endfor %}
+		                	</div>
+		              	</div>
+		            </div>
+		            <div class="mt-5 d-flex justify-content-between flex-column">
+		            	<a class="btn btn-link text-muted" href="{{ path('products') }}"><i class="fa fa-chevron-left"></i> Continue shopping</a>
+		            	<a class="btn btn-dark" href="">Checkout <i class="fa fa-chevron-right"></i></a>
+		            </div>
+		         </div>
+		         <div class="col-lg-4">
+		            <div class="block mb-5">
+		              	<div class="block-header">
+		                	<h6 class="text-uppercase mb-0">Order summary</h6>
+		              	</div>
+		              	<div class="block-body bg-light pt-1">
+		                	<p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
+		                	<ul class="order-summary mb-0 list-unstyled">
+		                  	<li class="order-summary-item"><span>Number item </span><span>{{ cart|length }}</span></li>
+		                  	<li class="order-summary-item border-0">
+		                  		<span>Total</span><strong class="order-summary-total">{{ ((total) / 100)|number_format(2, ',', ',') }} €</strong>
+		                  	</li>
+		                	</ul>
+		              	</div>
+		            </div>
+		         </div>
+		      </div>
+		   </div>
+		</section>
+	{% else %}
+		<div class="container">
+			<ol class="breadcrumb justify-content-center">
+				<li class="breadcrumb-item"><a href="{{ path('products') }}">Shop</a></li>
+				<li class="breadcrumb-item active">Shopping cart</li>
+			</ol>
+			<div class="container-content pb-5 text-center">
+				<h1 class="container-heading">Shopping cart</h1>
+				<div class="row">
+					<div class="col-xl-8 offset-xl-2">
+						<p class="lead text-muted">
+							You cart is empty for now. You can shop by clicking <a href="{{ path('products') }}">here</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock %}
