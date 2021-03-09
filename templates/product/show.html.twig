@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }} | Decodesign : fashion at home and at a low cost{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-6 pt-3">
+				<img src="/uploads/{{ product.image }}" alt="{{ product.image }}" class="img-fluid">
+			</div>
+			<div class="d-flex align-items-center col-lg-6 col-xl-5 pl-lg-5 mb-5">
+				<div>
+					<ul class="breadcrumb justify-content-start">
+						<li class="breadcrumb-item"><a href="">Home</a></li>
+						<li class="breadcrumb-item"><a href="">Category</a></li>
+						<li class="breadcrumb-item active"><a href="">{{ product.name }}</a></li>
+					</ul>
+					<h1 class="mb-4">{{ product.name }}</h1>
+					<div class="d-flex flex-column mb-4">
+						<ul class="list-inline mb-2">
+							<li class="list-inline-item h4 font-weight-light mb-0">{{ product.price }}</li>
+						</ul>
+					</div>
+					<p class="mb-4 text-muted">{{ product.description }}</p>
+					<ul class="list-inline">
+						<li class="list-inline-item">
+							<button type="submit" class="btn btn-dark btn-lg mb-1"><i class="fa fa-shopping-cart mr-2"></i>Add to cart</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
